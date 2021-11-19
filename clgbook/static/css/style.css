@@ -1,0 +1,557 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+body{
+    background-color: #ffffff;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.navbar{
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e2e2;
+    /* box-shadow: 0px 0px 10px #e4e4e4; */
+}
+
+.brp_8{
+    color: #5d833c;
+    font-weight: 850;
+    font-family: 'Courgette', cursive;
+}
+
+.brp_8:hover{
+    color: #5d833c;
+}
+
+._lik89o{
+    color: #5d833c;
+}
+
+._lik89o:hover{
+    color: #5d833c;
+}
+
+._drop9{
+    color: #5d833c;
+}
+
+._drop9:hover{
+    color: #5d833c;
+}
+
+._gderpo{
+    position: absolute;
+    right: 10%;
+    transform: translate(-50%);
+}
+
+/* home content */
+
+._jk_pl{
+    /* background-color: #ffffff; */
+    border-right: 1px solid #dbdbdb;
+    height: 100vh;
+    width: 230px;
+    position: fixed;
+
+}
+
+._hj7uhy{
+    font-size: 18px;
+    color: #5d833c;
+    text-decoration: none;
+}
+
+._hj7uhy:hover{
+    color: #5d833c;
+}
+
+._jKLI9o{
+    /* border: 1px solid; */
+    font-size: 18px;
+    color: #696161;
+    width: 100%;
+    height: 38px;
+    overflow: hidden;
+}
+
+._hju7uy6{
+    padding: 7px;
+}
+
+._huj_i8{
+    height: 4rem;
+}
+
+._huj_i8:hover{
+    border: none;
+    box-shadow: 0px 3px 10px 0px #cecece;
+}
+
+._juiHB:hover{
+    border: none;
+    box-shadow: 0px 3px 10px 0px #cecece;
+}
+
+._title{
+    font-size: 20px;
+    color: #696161;
+}
+
+/* end home content */
+
+
+/* Student content */
+
+._jh_nnj{
+    /* border: 1px solid; */
+    margin: 10px;
+    padding: 10px;    
+}
+
+/* end Student content */
+
+
+/* Accounts content */
+
+._ghn_olp{
+    /* border: 1px solid; */
+    width: 100%;
+}
+
+._img_lo9{
+    border-radius: 50%;
+    width: 90px; 
+    height: 90px; 
+}
+
+._lp_bh6yg{
+    /* border: 1px solid #ffffff; */
+    /* margin-top: 10rem; */
+}
+
+/* ._olfv_u78{
+    border: 1px solid;
+} */
+
+._deigh{
+    text-align: right;
+}
+
+._jmiko{
+    margin-top: 8rem;
+}
+
+._iknmj{
+    text-decoration: none;
+    padding: 7px;
+    background-color: #5d833c;
+    color: #ffffff;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 3px;
+}
+
+._iknmj:hover{
+    color: #ffffff;
+}
+
+._uj_nv5rd{
+    /* border: 1px solid; */
+    max-width: 27rem;
+}
+
+._kiol{
+    width: 100%;
+    border: none;
+    border-radius: 0px;
+}
+
+._Hn-h{
+    font-size: 18px;
+    color: #5d833c;
+}
+
+._ko_fr5t{
+    width: 100%;
+    height: 20rem;
+    -webkit-filter: brightness(75%);
+}
+
+._gb_k8tg{
+    /* border: 1px solid #ffffff; */
+    max-width: 40rem;
+}
+
+._gbh_cfdr{
+    font-size: 23px;
+}
+
+
+/* end Accounts content */
+
+
+/* Edit content */
+
+._hujNH{
+    /* border: 1px solid; */
+    -webkit-filter: brightness(90%);
+    background-color: #acb1a6;
+    width: 100%;
+    height: 8rem;
+}
+
+._jinm{
+    border: 1px solid #a5a5a5;
+    border-radius: 50%;
+    height: 120px;
+    width: 130px;
+    margin-left: 3.5rem;
+}
+
+._UJGTY{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+._hyu7{
+    margin-top: 1.3rem;
+}
+
+._NHJU7{
+    width: 100px;
+    color: #c02c2c;
+    background-color: #ffffff;
+    border: none;
+}
+
+._kilHN{
+    text-decoration: none;
+    color: #5d833c;
+}
+
+._kilHN:hover{
+    color: #5d833c;
+}
+
+/* end Edit content */
+
+
+/* Student content */
+
+._bg5tfr{
+    max-width: 40rem;
+}
+
+._ADDHJ{
+    height: 100px;
+    resize: none;
+}
+
+._GBTHY{
+    padding: 5px;
+    /* width: 100px; */
+    color: #ffffff;
+    background-color: royalblue;
+    border: none;
+    border-radius: 3px;
+}
+
+/* end Student content */
+
+/* Student data content */
+
+
+/* end Student data content */
+
+._btnsearc_{
+    display: none;
+}
+
+/* First year data */
+
+._tabghn{
+    height: 30rem;
+    overflow: auto;
+}
+
+.NH_juj{
+    border: none;
+    background-color: #ffffff;
+}
+
+/* end First year data */
+
+._DTRE4{
+    padding: 5px;
+    border: 1px solid #c5c5c5;
+    border-radius: 3px;
+    width: 80px;
+    margin-left: 1rem;
+}
+
+._bthggj{
+    text-decoration: none;
+    color: #B0F343;    
+    border: 1px solid #B0F343;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 14px;
+    transition: all, 0.20s;
+}
+
+._bthggj:hover{
+    color: #ffffff;
+    background-color: #B0F343;
+}
+
+._hXCDER{
+    width: 500px;
+}
+
+._fbcXDE{
+    height: 100vh;
+    overflow: auto;
+}
+
+._fbvcf{
+    width: 500px;
+}
+
+._gfVF{
+    width: 100%;
+    height: 100%;
+}
+
+._imgbHB{
+    width: 100%;
+    height: 18rem;
+}
+
+._KNBH:hover{
+    border: none;
+    box-shadow: 0px 3px 10px 0px #cecece;
+}
+
+@media (max-width: 531px){
+    ._fbvcf{
+        width: 100%;
+    }
+
+    ._imgbHB{
+        height: 100%;
+    }
+
+    ._fbvf{
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px){
+    ._KNBH{
+        height: 100%;
+    }
+}
+
+
+@media (max-width: 987px){
+    ._deft5r{
+        margin-right: 0rem;
+    }
+
+    .brp_8{
+        margin-left: 0rem;
+    }
+
+    ._kloki8{
+        visibility: hidden;
+    }
+
+    ._u8jk{
+        border-bottom: 1px solid #dbdbdb;
+        text-align: center;
+        padding: 8px;
+    }
+
+    ._uhead{
+        font-size: 15px;
+        color: #5d833c;
+    }
+
+    ._hu8ij{
+        /* border: 1px solid; */
+        width: 100%;
+        overflow: hidden;
+    }
+
+    ._jk_pl{
+        visibility: hidden;
+    }
+
+    ._kiol{
+        margin-top: 0rem;
+    }
+
+    ._btnsearc_{
+        border: none;
+        background-color: #ffffff;
+    }
+
+    ._btnsearc_{
+        display: block;
+    }
+}
+
+
+@media (max-width: 755px){
+    ._deft5r{
+        margin-right: 0rem;
+    }
+
+    .brp_8{
+        margin-left: 0rem;
+    }    
+    
+
+    ._ooff6yt{
+        max-width: 16rem;
+    }
+
+    ._uhead{
+        font-size: 12px;
+        color: #5d833c;
+    }
+
+    ._hu8ij{
+        /* border: 1px solid; */
+        width: 100%;
+        overflow: hidden;
+    }
+
+    ._jh_nnj{
+        /* border: 1px solid; */
+        padding: 5px;    
+    }
+}
+
+
+@media (max-width: 360px){
+    ._deft5r{
+        margin-right: 0rem;
+    }
+
+    .brp_8{
+        margin-left: 0rem;
+    }
+
+    ._hu8ij{
+        /* border: 1px solid; */
+        width: 100%;
+        overflow: hidden;
+    }
+
+    ._sert5{
+        max-width: 19rem;
+    }
+
+    ._lp_bh6yg{
+        margin-top: 0rem;
+    }
+
+    ._img_lo9{
+        height: 60px;
+        width: 60px;
+    }
+
+    ._ko_fr5t{
+        height: 15rem;
+    }
+
+    ._deigh{
+        text-align: right;
+    }
+    
+    ._jmiko{
+        margin-top: 0rem;
+    }
+
+    ._gbh_cfdr{
+        font-size: 16px;
+    }
+    
+    ._iknmj{
+        text-decoration: none;
+        padding: 5px;
+        background-color: #5d833c;
+        color: #ffffff;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 3px;
+    }
+
+    ._jinm{
+        margin-left: 5.5rem;
+    }
+
+    ._kilHN{
+        font-size: 13px;
+    }
+
+    ._huj_i8{
+        height: 3rem;
+    }
+
+    ._BHg6{
+        font-size: 13px;
+    }
+
+    ._DTRE4{
+        width: 65px;
+        margin-left: 5px;
+    }
+}
+
+@media(max-width: 375px){
+    ._DTRE4{
+        width: 50px;
+        margin-left: 4px;
+    }
+}
+
+@media (max-width: 320px){
+    ._huj_i8{
+        height: 3rem;
+    }
+
+    ._BHg6{
+        font-size: 11px;
+    }
+}
+
+
+@media(max-width: 414px){
+    ._huser{
+        width: 15rem;
+    }
+}
+
+
+@media (max-width: 280px){
+    ._deft5r{
+        margin-right: 0rem;
+    }
+
+    .brp_8{
+        margin-left: 0rem;
+    }
+
+    ._hu8ij{
+        /* border: 1px solid; */
+        width: 100%;
+        overflow: hidden;
+    }
+
+    ._jinm{
+        margin-left: 4rem;
+    }
+}

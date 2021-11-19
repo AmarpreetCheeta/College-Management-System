@@ -1,0 +1,53 @@
+{% extends 'clgbook/base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>CollegeStack - Log In</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-3 mb-5">
+    <div class="card" style="border: none;">
+        <div class="container" style="max-width: 30rem;">
+            <div class="card" style="border: none;">
+                <div class="card-body text-center">
+                    <h2 class="card-title _tiu7y">CollegeStack</h2>
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {% for fm in forms %}
+                        <label class="form-label mt-3 _labg5">{{fm.label}}</label>
+                        {{fm}}
+                        <div class="_xce9">
+                            <p class="_yxe">{{fm.errors|striptags}}</p>
+                        </div>
+                        {% endfor %}
+
+                        {% if forms.non_field_errors %}
+                        {% for err in forms.non_field_errors %}
+                        <div class="text-center">
+                            <p style="color: #b92c2c;">{{err}}</p>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        <input type="submit" class="_ybtn mt-4" value="Log In">
+                    </form>
+                </div>
+                <div class="card-body text-center mt-3">
+                    <span>
+                        <h5 class="card-title" style="color: #5c5555;">Don't have an account? <a class="_jki8"
+                                href="{% url 'signup' %}">Sign Up</a></h5>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

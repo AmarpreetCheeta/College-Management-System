@@ -1,0 +1,178 @@
+{% extends 'clgbook/base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>CollegeStack </title>
+{% endblock %}
+
+{% block content %}
+
+{% include 'clgbook/navbar.html' %}
+
+
+<div class="container _secr400">
+    <div class="p-3 _KL_OP mt-2">
+        <div class="_bn_vbbg">
+            <div class="_fvgbtt mb-4">
+                <p class="_title">Students Data</p>
+            </div>
+            <div class="_huBt5r4">
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <div class="col">
+                        <a style="text-decoration: none;color: #696161;" href="{% url 'first_year_data' %}">
+                            <div class="card mb-5 _juiHB _jm_gvb">
+                                <div class="card-body text-center d-flex justify-content-center">
+                                    <div class="_jh_nnj">
+                                        <h5 class="card-title">1st Year Students Data</h5>
+                                        <p class="card-text">Click here to see 1st Year of students data from your
+                                            {{request.user.username}}.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a style="text-decoration: none;color: #696161;" href="{% url 'second_year_data' %}">
+                            <div class="card mb-5 _juiHB _jm_gvb">
+                                <div class="card-body text-center d-flex justify-content-center">
+                                    <div class="_jh_nnj">
+                                        <h5 class="card-title">2nd Year Students Data</h5>
+                                        <p class="card-text">Click here to see 2nd Year of students data from your
+                                            {{request.user.username}}.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a style="text-decoration: none;color: #696161;" href="{% url 'third_year_data' %}">
+                            <div class="card mb-5 _juiHB _jm_gvb">
+                                <div class="card-body text-center d-flex justify-content-center">
+                                    <div class="_jh_nnj">
+                                        <h5 class="card-title">3rd Year Students Data</h5>
+                                        <p class="card-text">Click here to see 3rd Year of students data from your
+                                            {{request.user.username}}.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a style="text-decoration: none;color: #696161;" href="{% url 'fourth_year_data' %}">
+                            <div class="card mb-5 _juiHB _jm_gvb">
+                                <div class="card-body text-center d-flex justify-content-center">
+                                    <div class="_jh_nnj">
+                                        <h5 class="card-title">4th Year Students Data</h5>
+                                        <p class="card-text">Click here to see 4th Year of students data from your
+                                            {{request.user.username}}.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_bn_vbbg">
+            <div class="_fvgbtt mb-4">
+                <p class="_title">Faculties In {{request.user.username}}</p>
+            </div>
+            <div class="_huBt5r4">
+                {% if faculty_data %}
+                <div class="_NBVC4 mb-5 mt-5">
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                        {% for fd in faculty_data %}
+                        <div class="col">
+                            <div class="card" style="border: none;">
+                                <div class="card _KNBH mb-3" style="max-width: 540px;">
+                                    <div class="card-body">
+                                        <div class="_cvgf text-center">
+                                            <img width="110" height="110" style="border-radius: 50%;"
+                                                src="{{fd.faculty_image.url}}" alt="">
+                                        </div>
+                                        <div class="_Vrd4 pt-3 text-center">
+                                            <p class="card-text">{{fd.faculty_name}}</p>
+                                        </div>
+                                        <div class="_Vrd4 text-center">
+                                            <p class="card-text" style="font-size: 13px;">Joined: {{fd.joined_date}}</p>
+                                            <p class="card-text" style="font-size: 13px;">
+                                                <svg width="16" height="16" fill="#696161" class="bi bi-geo-alt"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                                                    <path
+                                                        d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                                </svg>
+                                                {{fd.faculty_add}}
+                                            </p>
+                                        </div>
+                                        <div class="_HBFr4">
+                                            <div class="_fbvf p-3">
+                                                <div class="_Vrd4 d-flex">
+                                                    <p class="card-text me-auto">Age: {{fd.faculty_age}}</p>
+                                                    <p class="card-text">Div: {{fd.faculty_teach_in_which_div}}</p>
+                                                </div>
+                                                <div class="_Vrd4 d-flex">
+                                                    <p class="card-text me-auto">{{fd.faculty_teach_in_which_class}}</p>
+                                                    <p class="card-text">{{fd.faculty_teach_in_which_year}}</p>
+                                                </div>
+                                                <div class="_Vrd4 d-flex">
+                                                    <p class="card-text me-auto">{{fd.gender}}</p>
+                                                    <p class="card-text">₹ {{fd.salary}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="_EDVFT d-flex p-3">
+                                                <a href="{% url 'faculty_edits' fd.faculty_name %}" class=" me-auto">
+                                                    <svg width="20" height="20" fill="royalblue"
+                                                        class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd"
+                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg>
+                                                </a>
+                                                <form action="{% url 'faculty_delete' fd.faculty_name %}" method="POST">
+                                                    {% csrf_token %}
+                                                    <button type="submit" class="NH_juj">
+                                                        <svg width="20" height="20" fill="red" class="bi bi-trash"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                        </svg>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% else %}
+                <div class="VT_gh text-center mt-3 mb-5">
+                    <div class="_IVGB" style="margin-top: 3rem;">
+                        <svg width="100" height="100" fill="#B0F343" class="bi bi-person-x" viewBox="0 0 16 16">
+                            <path
+                                d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                            <path fill-rule="evenodd"
+                                d="M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z" />
+                        </svg>
+                    </div>
+                    <h6 style="color: #B0F343;margin-bottom: 1.5rem;">No Faculties Data Here</h6>
+                    <a class="_bthggj" href="{% url 'teachers' %}">Add Faculties Data</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

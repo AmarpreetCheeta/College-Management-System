@@ -1,0 +1,53 @@
+{% extends 'clgbook/base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>CollegeStack - Sign Up</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-3 mb-5">
+    <div class="card" style="border: none;">
+        <div class="container" style="max-width: 30rem;">
+            <div class="card" style="border: none;">
+                <div class="card-body text-center">
+                    <h2 class="card-title _tiu7y">CollegeStack</h2>
+                </div>
+                {% if messages %}
+                {% for msg in messages %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Congratulations !!!</strong>{{msg}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="card-body">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {% for fm in form %}
+                        <label class="form-label mt-3 _labg5">{{fm.label}}</label>
+                        {{fm}}
+                        <span>
+                            <p style="color: #b92c2c;">{{fm.errors|striptags}}</p>
+                        </span>
+                        {% endfor %}
+                        <input type="submit" class="_ybtn mt-4" value="Sign Up">
+                    </form>
+                </div>
+                <div class="card-body text-center mt-3">
+                    <span>
+                        <h5 class="card-title" style="color: #5c5555;">Have an account? <a class="_jki8"
+                                href="{% url 'login' %}">Log In</a></h5>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'clgbook/base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>CollegeStack - Students</title>
+{% endblock %}
+
+{% block content %}
+
+{% include 'clgbook/navbar.html' %}
+
+<!-- Off canvas -->
+<div class="offcanvas offcanvas-start _ooff6yt" tabindex="-1" id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <h5 class="offcanvas-title _uhead d-flex" id="offcanvasExampleLabel">
+            <img width="30" height="30" style="border-radius: 50%;" src="{% static 'images/user-icon.png' %}" alt="">
+            <p class="_hu8ij mt-1">{{request.user.username}}</p>
+        </h5>
+        <form class="d-flex">
+            <input class="_sert5" type="search" placeholder="Search..." aria-label="Search">
+        </form>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item _u8jk">
+                <a class="nav-link _lik89o active" href="">Account</a>
+            </li>
+            <li class="nav-item _u8jk">
+                <a class="nav-link _lik89o active" href="{% url 'students' %}">Students</a>
+            </li>
+            <li class="nav-item _u8jk">
+                <a class="nav-link _lik89o active" href="{% url 'teachers' %}">Teachers</a>
+            </li>
+            <li class="nav-item _u8jk">
+                <a class="nav-link _lik89o active" href="">Change Password</a>
+            </li>
+            <li class="nav-item _u8jk">
+                <a class="nav-link _lik89o active" href="{% url 'logout' %}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- end Off canvas -->
+
+
+<div class="container _secr400 _bg5tfr">
+    <div class="p-5 _kollpl">
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            {{msg}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="_bn_vbbg">
+            <div class="_fvgbtt text-center">
+                <p class="_title">Students data entry form</p>
+            </div>
+            <div class="card" style="border: none;">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for sf in std_form %}
+                    <label for="exampleFormControlInput1" class="form-label mt-4">{{sf.label}}</label><br>
+                    {{sf}}
+                    {% endfor %}
+                    <div class="_vgtf mt-5" style="text-align: right;">
+                        <input type="submit" class="_GBTHY" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

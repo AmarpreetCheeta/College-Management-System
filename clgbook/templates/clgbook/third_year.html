@@ -1,0 +1,487 @@
+{% extends 'clgbook/base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>CollegeStack - Third Year Student Data</title>
+{% endblock %}
+
+{% block content %}
+
+{% include 'clgbook/navbar.html' %}
+
+
+<div class="container _secr400">
+    <div class="p-3 _KL_OP mt-2">
+        <div class="_bn_vbbg">
+            <div class="_fvgbtt mb-4 text-center">
+                <p class="_title">Third Year Students Data</p>
+            </div>
+            {% if std_data %}
+            <div class="_secfdr mb-5">
+                <form action="{% url 'search_result_third_year' %}" method="GET" class="d-flex justify-content-center">
+                    {% csrf_token %}
+                    <input type="search" name="search_third_year" class="form-control _hXCDER" id="search_id"
+                        placeholder="Search here all streams of Third Year students data...">
+                </form>
+            </div>
+            <div class="_huBt5r4">
+                {% if std_bca_data %}
+                <div class="_fvgbtt mb-4">
+                    <p>BCA Students Data</p>
+                </div>
+                <div class="_tabghn">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col _ujVGb">Image</th>
+                                <th scope="col _ujVGb">Name</th>
+                                <th scope="col _ujVGb">Roll</th>
+                                <th scope="col _ujVGb">Age</th>
+                                <th scope="col _ujVGb">Div</th>
+                                <th scope="col _ujVGb">Add</th>
+                                <th scope="col _ujVGb">Course</th>
+                                <th scope="col _ujVGb">Course Year</th>
+                                <th scope="col _ujVGb">Gender</th>
+                                <th scope="col _ujVGb">Student Fees</th>
+                                <th scope="col _ujVGb">Addmission Date</th>
+                                <th scope="col _ujVGb">Edit</th>
+                                <th scope="col _ujVGb">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sbd in std_bca_data %}
+                            <tr class="text-center">
+                                <td>
+                                    <img width="50" height="50" style="border-radius: 50%;"
+                                        src="{{sbd.student_image.url}}" alt="">
+                                </td>
+                                <td class="_kjnmh">{{sbd.student_name}}</td>
+                                <td class="_kjnmh">{{sbd.student_roll}}</td>
+                                <td class="_kjnmh">{{sbd.student_age}}</td>
+                                <td class="_kjnmh">{{sbd.student_div}}</td>
+                                <td class="_kjnmh">{{sbd.student_add}}</td>
+                                <td class="_kjnmh">{{sbd.student_course}}</td>
+                                <td class="_kjnmh">{{sbd.student_course_year}}</td>
+                                <td class="_kjnmh">{{sbd.gender}}</td>
+                                <td class="_kjnmh">₹ {{sbd.student_fees}}</td>
+                                <td class="_kjnmh">{{sbd.addmission_date}}</td>
+                                <td>
+                                    <a href="{% url 'student_edit' sbd.student_name %}">
+                                        <svg width="20" height="20" fill="royalblue" class="bi bi-pencil-square"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                            <path fill-rule="evenodd"
+                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                        </svg>
+                                    </a>
+                                </td>
+                                <td>
+                                    <form action="{% url 'student_delete' sbd.student_name %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="NH_juj">
+                                            <svg width="20" height="20" fill="red" class="bi bi-trash"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+            <div class="_huBt5r4">
+                {% if std_b_tech_data %}
+                <div class="_fvgbtt mb-4">
+                    <p>B-Tech Students Data</p>
+                </div>
+                <div class="_tabghn">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col _ujVGb">Image</th>
+                                <th scope="col _ujVGb">Name</th>
+                                <th scope="col _ujVGb">Roll</th>
+                                <th scope="col _ujVGb">Age</th>
+                                <th scope="col _ujVGb">Div</th>
+                                <th scope="col _ujVGb">Add</th>
+                                <th scope="col _ujVGb">Course</th>
+                                <th scope="col _ujVGb">Course Year</th>
+                                <th scope="col _ujVGb">Gender</th>
+                                <th scope="col _ujVGb">Student Fees</th>
+                                <th scope="col _ujVGb">Addmission Date</th>
+                                <th scope="col _ujVGb">Edit</th>
+                                <th scope="col _ujVGb">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sbd in std_b_tech_data %}
+                            <tr class="text-center">
+                                <td>
+                                    <img width="50" height="50" style="border-radius: 50%;"
+                                        src="{{sbd.student_image.url}}" alt="">
+                                </td>
+                                <td class="_kjnmh">{{sbd.student_name}}</td>
+                                <td class="_kjnmh">{{sbd.student_roll}}</td>
+                                <td class="_kjnmh">{{sbd.student_age}}</td>
+                                <td class="_kjnmh">{{sbd.student_div}}</td>
+                                <td class="_kjnmh">{{sbd.student_add}}</td>
+                                <td class="_kjnmh">{{sbd.student_course}}</td>
+                                <td class="_kjnmh">{{sbd.student_course_year}}</td>
+                                <td class="_kjnmh">{{sbd.gender}}</td>
+                                <td class="_kjnmh">₹ {{sbd.student_fees}}</td>
+                                <td class="_kjnmh">{{sbd.addmission_date}}</td>
+                                <td>
+                                    <a href="{% url 'student_edit' sbd.student_name %}">
+                                        <svg width="20" height="20" fill="royalblue" class="bi bi-pencil-square"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                            <path fill-rule="evenodd"
+                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                        </svg>
+                                    </a>
+                                </td>
+                                <td>
+                                    <form action="{% url 'student_delete' sbd.student_name %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="NH_juj">
+                                            <svg width="20" height="20" fill="red" class="bi bi-trash"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+            <div class="_huBt5r4">
+                {% if std_hotel_Manage_data %}
+                <div class="_fvgbtt mb-4">
+                    <p>Hotel Management Students Data</p>
+                </div>
+                <div class="_tabghn">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col _ujVGb">Image</th>
+                                <th scope="col _ujVGb">Name</th>
+                                <th scope="col _ujVGb">Roll</th>
+                                <th scope="col _ujVGb">Age</th>
+                                <th scope="col _ujVGb">Div</th>
+                                <th scope="col _ujVGb">Add</th>
+                                <th scope="col _ujVGb">Course</th>
+                                <th scope="col _ujVGb">Course Year</th>
+                                <th scope="col _ujVGb">Gender</th>
+                                <th scope="col _ujVGb">Student Fees</th>
+                                <th scope="col _ujVGb">Addmission Date</th>
+                                <th scope="col _ujVGb">Edit</th>
+                                <th scope="col _ujVGb">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sbd in std_hotel_Manage_data %}
+                            <tr class="text-center">
+                                <td>
+                                    <img width="50" height="50" style="border-radius: 50%;"
+                                        src="{{sbd.student_image.url}}" alt="">
+                                </td>
+                                <td class="_kjnmh">{{sbd.student_name}}</td>
+                                <td class="_kjnmh">{{sbd.student_roll}}</td>
+                                <td class="_kjnmh">{{sbd.student_age}}</td>
+                                <td class="_kjnmh">{{sbd.student_div}}</td>
+                                <td class="_kjnmh">{{sbd.student_add}}</td>
+                                <td class="_kjnmh">{{sbd.student_course}}</td>
+                                <td class="_kjnmh">{{sbd.student_course_year}}</td>
+                                <td class="_kjnmh">{{sbd.gender}}</td>
+                                <td class="_kjnmh">₹ {{sbd.student_fees}}</td>
+                                <td class="_kjnmh">{{sbd.addmission_date}}</td>
+                                <td>
+                                    <a href="{% url 'student_edit' sbd.student_name %}">
+                                        <svg width="20" height="20" fill="royalblue" class="bi bi-pencil-square"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                            <path fill-rule="evenodd"
+                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                        </svg>
+                                    </a>
+                                </td>
+                                <td>
+                                    <form action="{% url 'student_delete' sbd.student_name %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="NH_juj">
+                                            <svg width="20" height="20" fill="red" class="bi bi-trash"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+            <div class="_huBt5r4">
+                {% if std_mca_data %}
+                <div class="_fvgbtt mb-4">
+                    <p>MCA Students Data</p>
+                </div>
+                <div class="_tabghn">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col _ujVGb">Image</th>
+                                <th scope="col _ujVGb">Name</th>
+                                <th scope="col _ujVGb">Roll</th>
+                                <th scope="col _ujVGb">Age</th>
+                                <th scope="col _ujVGb">Div</th>
+                                <th scope="col _ujVGb">Add</th>
+                                <th scope="col _ujVGb">Course</th>
+                                <th scope="col _ujVGb">Course Year</th>
+                                <th scope="col _ujVGb">Gender</th>
+                                <th scope="col _ujVGb">Student Fees</th>
+                                <th scope="col _ujVGb">Addmission Date</th>
+                                <th scope="col _ujVGb">Edit</th>
+                                <th scope="col _ujVGb">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sbd in std_mca_data %}
+                            <tr class="text-center">
+                                <td>
+                                    <img width="50" height="50" style="border-radius: 50%;"
+                                        src="{{sbd.student_image.url}}" alt="">
+                                </td>
+                                <td class="_kjnmh">{{sbd.student_name}}</td>
+                                <td class="_kjnmh">{{sbd.student_roll}}</td>
+                                <td class="_kjnmh">{{sbd.student_age}}</td>
+                                <td class="_kjnmh">{{sbd.student_div}}</td>
+                                <td class="_kjnmh">{{sbd.student_add}}</td>
+                                <td class="_kjnmh">{{sbd.student_course}}</td>
+                                <td class="_kjnmh">{{sbd.student_course_year}}</td>
+                                <td class="_kjnmh">{{sbd.gender}}</td>
+                                <td class="_kjnmh">₹ {{sbd.student_fees}}</td>
+                                <td class="_kjnmh">{{sbd.addmission_date}}</td>
+                                <td>
+                                    <a href="{% url 'student_edit' sbd.student_name %}">
+                                        <svg width="20" height="20" fill="royalblue" class="bi bi-pencil-square"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                            <path fill-rule="evenodd"
+                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                        </svg>
+                                    </a>
+                                </td>
+                                <td>
+                                    <form action="{% url 'student_delete' sbd.student_name %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="NH_juj">
+                                            <svg width="20" height="20" fill="red" class="bi bi-trash"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+            <div class="_huBt5r4">
+                {% if std_m_tech_data %}
+                <div class="_fvgbtt mb-4">
+                    <p>M-Tech Students Data</p>
+                </div>
+                <div class="_tabghn">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col _ujVGb">Image</th>
+                                <th scope="col _ujVGb">Name</th>
+                                <th scope="col _ujVGb">Roll</th>
+                                <th scope="col _ujVGb">Age</th>
+                                <th scope="col _ujVGb">Div</th>
+                                <th scope="col _ujVGb">Add</th>
+                                <th scope="col _ujVGb">Course</th>
+                                <th scope="col _ujVGb">Course Year</th>
+                                <th scope="col _ujVGb">Gender</th>
+                                <th scope="col _ujVGb">Student Fees</th>
+                                <th scope="col _ujVGb">Addmission Date</th>
+                                <th scope="col _ujVGb">Edit</th>
+                                <th scope="col _ujVGb">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sbd in std_m_tech_data %}
+                            <tr class="text-center">
+                                <td>
+                                    <img width="50" height="50" style="border-radius: 50%;"
+                                        src="{{sbd.student_image.url}}" alt="">
+                                </td>
+                                <td class="_kjnmh">{{sbd.student_name}}</td>
+                                <td class="_kjnmh">{{sbd.student_roll}}</td>
+                                <td class="_kjnmh">{{sbd.student_age}}</td>
+                                <td class="_kjnmh">{{sbd.student_div}}</td>
+                                <td class="_kjnmh">{{sbd.student_add}}</td>
+                                <td class="_kjnmh">{{sbd.student_course}}</td>
+                                <td class="_kjnmh">{{sbd.student_course_year}}</td>
+                                <td class="_kjnmh">{{sbd.gender}}</td>
+                                <td class="_kjnmh">₹ {{sbd.student_fees}}</td>
+                                <td class="_kjnmh">{{sbd.addmission_date}}</td>
+                                <td>
+                                    <a href="{% url 'student_edit' sbd.student_name %}">
+                                        <svg width="20" height="20" fill="royalblue" class="bi bi-pencil-square"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                            <path fill-rule="evenodd"
+                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                        </svg>
+                                    </a>
+                                </td>
+                                <td>
+                                    <form action="{% url 'student_delete' sbd.student_name %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="NH_juj">
+                                            <svg width="20" height="20" fill="red" class="bi bi-trash"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+            <div class="_huBt5r4">
+                {% if std_b_com_data %}
+                <div class="_fvgbtt mb-4">
+                    <p>B-Com Students Data</p>
+                </div>
+                <div class="_tabghn">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col _ujVGb">Image</th>
+                                <th scope="col _ujVGb">Name</th>
+                                <th scope="col _ujVGb">Roll</th>
+                                <th scope="col _ujVGb">Age</th>
+                                <th scope="col _ujVGb">Div</th>
+                                <th scope="col _ujVGb">Add</th>
+                                <th scope="col _ujVGb">Course</th>
+                                <th scope="col _ujVGb">Course Year</th>
+                                <th scope="col _ujVGb">Gender</th>
+                                <th scope="col _ujVGb">Student Fees</th>
+                                <th scope="col _ujVGb">Addmission Date</th>
+                                <th scope="col _ujVGb">Edit</th>
+                                <th scope="col _ujVGb">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sbd in std_b_com_data %}
+                            <tr class="text-center">
+                                <td>
+                                    <img width="50" height="50" style="border-radius: 50%;"
+                                        src="{{sbd.student_image.url}}" alt="">
+                                </td>
+                                <td class="_kjnmh">{{sbd.student_name}}</td>
+                                <td class="_kjnmh">{{sbd.student_roll}}</td>
+                                <td class="_kjnmh">{{sbd.student_age}}</td>
+                                <td class="_kjnmh">{{sbd.student_div}}</td>
+                                <td class="_kjnmh">{{sbd.student_add}}</td>
+                                <td class="_kjnmh">{{sbd.student_course}}</td>
+                                <td class="_kjnmh">{{sbd.student_course_year}}</td>
+                                <td class="_kjnmh">{{sbd.gender}}</td>
+                                <td class="_kjnmh">₹ {{sbd.student_fees}}</td>
+                                <td class="_kjnmh">{{sbd.addmission_date}}</td>
+                                <td>
+                                    <a href="{% url 'student_edit' sbd.student_name %}">
+                                        <svg width="20" height="20" fill="royalblue" class="bi bi-pencil-square"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                            <path fill-rule="evenodd"
+                                                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                        </svg>
+                                    </a>
+                                </td>
+                                <td>
+                                    <form action="{% url 'student_delete' sbd.student_name %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="NH_juj">
+                                            <svg width="20" height="20" fill="red" class="bi bi-trash"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+            {% else %}
+            <div class="VT_gh text-center mt-5">
+                <div class="_IVGB" style="margin-top: 6rem;">
+                    <svg width="100" height="100" fill="#B0F343" class="bi bi-person-x" viewBox="0 0 16 16">
+                        <path
+                            d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                        <path fill-rule="evenodd"
+                            d="M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z" />
+                    </svg>
+                </div>
+                <h6 style="color: #B0F343;margin-bottom: 1.5rem;">No Students Data In Third Year </h6>
+                <a class="_bthggj" href="{% url 'students' %}">Add Third Year Student Data</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

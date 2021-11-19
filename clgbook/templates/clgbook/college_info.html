@@ -1,0 +1,54 @@
+{% extends 'clgbook/base.html' %}
+{% load static %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>CollegeStack </title>
+{% endblock %}
+
+{% block content %}
+
+{% include 'clgbook/navbar.html' %}
+
+<div class="container" style="max-width: 55rem;">
+    <div class="card mt-4" style="border: none;border-radius: 0%;">
+        <ul class="d-flex">
+            {% if clg_data %}
+            {% for cd in clg_data %}
+            <li class="list-group-item" style="border: none;"><a class="_kilHN"
+                    href="{% url 'edits_update' cd.id %}">Edit</a></li>
+            {% endfor %}
+            {% else %}
+            <li class="list-group-item" style="border: none;"><a class="_kilHN" href="{% url 'edits' %}">Edit</a></li>
+            {% endif %}
+            <li class="list-group-item" style="border: none;border-bottom: 1px solid #5d833c;"><a class="_kilHN"
+                    href="{% url 'college_info' %}">College Info</a></li>
+            <li class="list-group-item" style="border: none;"><a class="_kilHN"
+                    href="{% url 'change_password' %}">Change Password</a></li>
+        </ul>
+    </div>
+    <div class="card mb-5 mt-3" style="border: none;">
+        <div class="container" style="max-width: 35rem;">
+            <div class="card-body">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for fm in form %}
+                    <label class="form-label mt-4">{{fm.label}}</label>
+                    {{fm}}
+                    {% endfor %}
+                    <div class="_vgtf mt-5" style="text-align: right;">
+                        <input type="submit" class="_GBTHY" value="Change">
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-outline-danger" href="{% url 'account_delete' %}">Delete Account</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
